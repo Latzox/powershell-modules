@@ -1,3 +1,5 @@
+[![Unit Tests](https://github.com/Latzox/powershell-modules/actions/workflows/powershell-unit-tests.yml/badge.svg)](https://github.com/Latzox/powershell-modules/actions/workflows/powershell-unit-tests.yml)
+
 # Public PowerShell Modules
 
 This repository contains a collection of PowerShell modules that provide various functionalities such as logging operations, downloading files, and more. Each function in these modules is designed to make it easier to handle common tasks while adhering to PowerShell best practices.

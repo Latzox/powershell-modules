@@ -1,0 +1,27 @@
+name: Unit Tests
+
+run-name: >
+  ${{ github.workflow }}: ${{ github.event_name }} for ${{ github.ref_name }} by @${{ github.actor }}
+
+on:
+  push:
+    branches:
+      - '**'
+      - '!main'
+
+jobs:
+  Unit-Test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run Pester Tests
+        shell: pwsh
+        run: |
+          $conf = New-PesterConfiguration
+          $conf.Run.Path = "tests"
+          $conf.Output.CIFormat = "GithubActions"
+          Invoke-Pester -Configuration $conf
+    
