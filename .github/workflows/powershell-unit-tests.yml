@@ -20,5 +20,8 @@ jobs:
       - name: Run Pester Tests
         shell: pwsh
         run: |
-          Invoke-Pester -Path './tests'
+          $conf = New-PesterConfiguration
+          $conf.Run.Path = "tests"
+          $conf.Output.CIFormat = "GithubActions"
+          Invoke-Pester -Configuration $conf
     
