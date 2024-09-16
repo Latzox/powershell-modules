@@ -1,6 +1,8 @@
-. ".\functions\Write-Log.ps1"
-
 Describe 'Write-Log' {
+
+    BeforeAll {
+        . ".\functions\Write-Log.ps1"
+    }
 
     BeforeEach {
         $global:LogFile = "$PSScriptRoot\testlog.txt"
