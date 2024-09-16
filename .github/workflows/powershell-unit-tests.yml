@@ -11,23 +11,14 @@ on:
 
 jobs:
   Unit-Test:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      
-      - name: Set up PowerShell
-        uses: actions/setup-pwsh@v2
-        with:
-          pwsh-version: '7.x'
-
-      - name: Install Pester
-        run: |
-          Install-Module -Name Pester -Force -SkipPublisherCheck
-          Import-Module Pester
 
       - name: Run Pester Tests
+        shell: pwsh
         run: |
           Invoke-Pester -Path './tests' -OutputFormat NUnitXml -OutputFile './TestResults/results.xml'
         continue-on-error: true
