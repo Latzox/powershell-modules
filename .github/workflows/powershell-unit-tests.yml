@@ -20,6 +20,7 @@ jobs:
       - name: Run Pester Tests
         shell: pwsh
         run: |
+          . ".\functions\Write-Log.ps1"
           Invoke-Pester -Path './tests' -OutputFormat NUnitXml -OutputFile './TestResults/results.xml'
         continue-on-error: true
       
