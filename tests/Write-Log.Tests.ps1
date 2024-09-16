@@ -1,4 +1,4 @@
-. "..\functions\Write-Log.ps1"
+. ".\functions\Write-Log.ps1"
 
 Describe 'Write-Log' {
 
