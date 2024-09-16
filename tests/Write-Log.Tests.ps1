@@ -3,7 +3,6 @@
 Describe 'Write-Log' {
 
     BeforeEach {
-        # Mocking a global variable $LogFile to simulate logging to a file.
         $global:LogFile = "$PSScriptRoot\testlog.txt"
         if (Test-Path $global:LogFile) {
             Remove-Item $global:LogFile
@@ -58,12 +57,6 @@ Describe 'Write-Log' {
                 $logPath = "$PSScriptRoot\testlog.txt"
                 Test-Path $logPath | Should -Be $false
             }
-        }
-    }
-
-    AfterEach {
-        if (Test-Path $global:LogFile) {
-            Remove-Item $global:LogFile
         }
     }
 
