@@ -46,7 +46,11 @@ function Write-Log {
         # Log level: Info, Warning, Error, Success
         [Parameter(Mandatory = $false, Position = 1)]
         [ValidateSet("Info", "Warning", "Error", "Success")]
-        [string]$LogLevel = "Info"
+        [string]$LogLevel = "Info",
+
+        # The LogFile path
+        [Parameter(Mandatory = $false, Position = 2)]
+        [string]$LogFile
     )
 
     Begin {
