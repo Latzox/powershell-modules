@@ -20,7 +20,6 @@ jobs:
       - name: Run Pester Tests
         shell: pwsh
         run: |
-          . ".\functions\Write-Log.ps1"
           Invoke-Pester -Path './tests' -OutputFormat NUnitXml -OutputFile './TestResults/results.xml'
         continue-on-error: true
       
@@ -31,9 +30,10 @@ jobs:
           path: ./TestResults/results.xml
           
       - name: Publish Test Results
-        uses: dorny/test-reporter@v1
+        uses: zyborg/pester-tests-report@v1
         if: always()
         with:
-          name: Pester Tests
-          path: ./TestResults/results.xml
-          reporter: nunit
+          include_paths: tests
+          report_title: Pester Test Results
+          github_token: ${{ secrets.GH_TOKEN }}
+    
