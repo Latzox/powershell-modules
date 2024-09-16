@@ -20,20 +20,5 @@ jobs:
       - name: Run Pester Tests
         shell: pwsh
         run: |
-          Invoke-Pester -Path './tests' -OutputFormat NUnitXml -OutputFile './TestResults/results.xml'
-        continue-on-error: true
-      
-      - name: Upload Test Results
-        uses: actions/upload-artifact@v3
-        with:
-          name: test-results
-          path: ./TestResults/results.xml
-          
-      - name: Publish Test Results
-        uses: dorny/test-reporter@v1
-        if: always()
-        with:
-          name: Pester Tests
-          path: ./TestResults/results.xml
-          reporter: dotnet-nunit
+          Invoke-Pester -Path './tests'
     
